@@ -29,38 +29,60 @@
       "password": "Abc@12345",
       "age": 18,
       "id": 4
-    },
-    {
-      "data": "U2FsdGVkX1/emHDDlbIyMoPBa4WPuvwPfWB+Szzvag+cH5VPAgVV7LOaA2lA6g5KJp469O6peuITes2iACa7Aa4Ov6AwZpmrw2IUuc459mg=",
-      "id": 5
     }
   ],
   "movies": [
     {
       "id": 1,
       "name": "Mission impossible",
-      "location": "mumbai",
+      "location": "Goregaon",
       "genre": "action",
       "rating": "5",
       "showTime": [
         {
           "date": "2020-01-01",
-          "time": [
-            "12.12pm",
-            "13.14pm",
-            "14.15pm"
-          ]
+          "time": ["12.12pm", "13.14pm", "14.15pm"]
         },
         {
           "date": "2020-01-02",
-          "time": [
-            "12.12pm",
-            "13.14pm",
-            "14.15pm"
-          ]
+          "time": ["12.12pm", "13.14pm", "14.15pm"]
         }
       ],
-      "price": "500"
+      "price": "500",
+      "isShowRunning": 0,
+      "ticketavialable": 100
+    },
+    {
+      "id": 2,
+      "name": "The Shawshank Redemption",
+      "location": "Goregaon",
+      "genre": "drama/crime",
+      "rating": "5",
+      "showTime": [
+        {
+          "date": "2020-01-01",
+          "time": ["12.12pm", "13.14pm", "14.15pm"]
+        }
+      ],
+      "price": "500",
+      "isShowRunning": 1,
+      "ticketavialable": 1
+    },
+    {
+      "id": 3,
+      "name": "The friends",
+      "location": "Malad",
+      "genre": "drama/crime",
+      "rating": "5",
+      "showTime": [
+        {
+          "date": "2020-01-01",
+          "time": ["12.12pm", "13.14pm", "14.15pm"]
+        }
+      ],
+      "price": "600",
+      "isShowRunning": 1,
+      "ticketavialable": 2
     }
   ]
 }

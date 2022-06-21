@@ -3,9 +3,9 @@ import dotenv from 'dotenv'
 import { errorHandler, notfound } from './middleware/errorHandler.middleware.js'
 import userRoute from './routes/user.routes.js'
 import encRoute from './routes/enc.routes.js'
+import movieRoute from './routes/movie.routes.js'
 import morgon from 'morgan'
 import color from 'colors'
-import { getEncryptedDate, getDecryptedDate } from './utils/enc.js'
 
 dotenv.config()
 const app = express()
@@ -17,9 +17,8 @@ if (process.env.NODE_ENV == 'development') {
 
 app.use(express.json())
 
-app.use('/api/user', userRoute)
-app.use('/api/user', userRoute)
-app.use('/api/user', userRoute)
+app.use('/api/users', userRoute)
+app.use('/api/movies', movieRoute)
 app.use('/api/enc', encRoute)
 
 app.use(notfound)
