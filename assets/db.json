@@ -1,0 +1,66 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@mail.com",
+      "password": "password",
+      "age": 18,
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "name": "jack Doe",
+      "email": "jack@mail.com",
+      "password": "jackpassword",
+      "age": 27,
+      "isAdmin": false
+    },
+    {
+      "name": "vivek",
+      "email": "vivek@mail.com",
+      "password": "Abc@12345",
+      "age": 18,
+      "id": 3
+    },
+    {
+      "name": "kailash",
+      "email": "kailash@mail.com",
+      "password": "Abc@12345",
+      "age": 18,
+      "id": 4
+    },
+    {
+      "data": "U2FsdGVkX1/emHDDlbIyMoPBa4WPuvwPfWB+Szzvag+cH5VPAgVV7LOaA2lA6g5KJp469O6peuITes2iACa7Aa4Ov6AwZpmrw2IUuc459mg=",
+      "id": 5
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "name": "Mission impossible",
+      "location": "mumbai",
+      "genre": "action",
+      "rating": "5",
+      "showTime": [
+        {
+          "date": "2020-01-01",
+          "time": [
+            "12.12pm",
+            "13.14pm",
+            "14.15pm"
+          ]
+        },
+        {
+          "date": "2020-01-02",
+          "time": [
+            "12.12pm",
+            "13.14pm",
+            "14.15pm"
+          ]
+        }
+      ],
+      "price": "500"
+    }
+  ]
+}
