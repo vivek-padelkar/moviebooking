@@ -46,8 +46,8 @@ export const userSignin = asyncHandler(async (req, res) => {
     )
     if (data.length) {
       res.json({
-        message: `Login succefully, Welcome back ${req.user.name}`,
-        token: generateToken(req.user.id),
+        message: `Login succefull`,
+        token: generateToken(data[0].id),
       })
     } else {
       res.status(401).json({
@@ -58,37 +58,6 @@ export const userSignin = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error(validation.error.details[0].message)
   }
-})
-
-export const userUpdate = asyncHandler(async (req, res) => {
-  // const decryptedData = JSON.parse(getDecryptedDate(req.body.data))
-  // const validation = signinValidtor.validate(decryptedData)
-  // if (!validation.error) {
-  const { email, password } = req.body
-  //   const { data } = await axios.get(
-  //     `${process.env.DBBASEURL}user?email=${email}&password=${password}`
-  //   )
-  const a = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }
-  const { data } = await axios.put(
-    `${process.env.DBBASEURL}user?email=${email}&password=${password}`,
-    { password: 'lihi' },
-    a
-  )
-  res.json({
-    message: `done`,
-  })
-  //   } else {
-  //     res.status(401).json({
-  //       message: 'Invalid email/password,please re-enter',
-  //     })
-  //   }
-  // } else {
-  //   res.status(400)
-  //   throw new Error(validation.error.details[0].message)
 })
 
 const userExsist = asyncHandler(async (email) => {

@@ -1,9 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import {
-  signUpValidtor,
-  signinValidtor,
-} from '../validation/user.validation.js'
-import generateToken from '../utils/generateToken.js'
+import { bookTicketValidtor } from '../validation/user.validation.js'
 import axios from 'axios'
 import { getDecryptedDate } from '../utils/enc.js'
 
@@ -35,27 +31,81 @@ export const getMovies = asyncHandler(async (req, res) => {
     }
   } else {
     res.json({
-      message: `oops ! Data not found, please cahnge your movie preference`,
+      message: `oops ! Data not found, please change your movie preference`,
     })
   }
 })
 
-export const userSignin = asyncHandler(async (req, res) => {
+export const getMovieLocation = asyncHandler(async (req, res) => {
+  const { data } = await axios.get(`${process.env.DBBASEURL}movies`)
+
+  if (data.length) {
+    let objLocation = ''
+
+    data.map((mData) => (objLocation = objLocation + ',' + mData.location))
+    res.json({
+      location: [
+        ...new Set(objLocation.substring(1, objLocation.length).split(',')),
+      ],
+    })
+  } else {
+    res.json({
+      message: `oops ! Data not found`,
+    })
+  }
+})
+
+export const bookTicket = asyncHandler(async (req, res) => {
+  let url = '?'
   const decryptedData = JSON.parse(getDecryptedDate(req.body.data))
-  const validation = signinValidtor.validate(decryptedData)
+  const validation = bookTicketValidtor.validate(decryptedData)
+
   if (!validation.error) {
-    const { email, password } = validation.value
-    const { data } = await axios.get(
-      `${process.env.DBBASEURL}user?email=${email}&password=${password}`
-    )
+    const { location, movieName, price, noofticket, movieTime, movieDate } =
+      validation.value
+
+    location ? (url = url + `&location=${location}`) : url
+    movieName ? (url = url + `&name=${movieName}`) : url
+
+    url = url !== '?' ? '?' + url.substring(2, url.length) : ''
+    const { data } = await axios.get(`${process.env.DBBASEURL}movies${url}`)
+
     if (data.length) {
-      res.json({
-        message: `Login succefully, Welcome back ${req.user.name}`,
-        token: generateToken(req.user.id),
-      })
+      // check if movie is avialbel with selected movie name,date,location,time
+      let showDateExsist = []
+      let showTimeExsist = []
+      showDateExsist = data[0].showTime.filter(
+        (data) => data.date === movieDate
+      )
+
+      if (showDateExsist[0]) {
+        showTimeExsist = showDateExsist[0].time.filter(
+          (mTime) => mTime === movieTime
+        )
+      }
+      if (
+        showDateExsist &&
+        showDateExsist &&
+        data[0].location === location &&
+        data[0].name === movieName
+      ) {
+        if (noofticket > data[0].ticketavialable) {
+          res.json({
+            message: `oops ! only ${data[0].ticketavialable} ticket's left`,
+          })
+        } else {
+          res.json({
+            message: `your ticketTicket booked successfully, thank you visit again`,
+            ticketNumber: 'MYMOVIE' + Date.now(),
+            location,
+            movieTime,
+            movieDate,
+          })
+        }
+      }
     } else {
-      res.status(401).json({
-        message: 'Invalid email/password,please re-enter',
+      res.json({
+        message: `oops ! Data not found, please change your movie preference`,
       })
     }
   } else {

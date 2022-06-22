@@ -19,3 +19,17 @@ export const signinValidtor = Joi.object().keys({
   email: Joi.string().required(),
   password: Joi.string().required(),
 })
+
+export const bookTicketValidtor = Joi.object({
+  location: Joi.string().required(),
+  movieName: Joi.string().required(),
+  price: Joi.string().required(),
+  noofticket: Joi.string().required(),
+  movieTime: Joi.string().required(),
+  movieDate: Joi.string().required(),
+  cardDetail: Joi.object({
+    cardNumber: Joi.string().required().min(12),
+    cvv: Joi.string().required().min(4),
+    expDate: Joi.string().required(),
+  }).required(),
+})
