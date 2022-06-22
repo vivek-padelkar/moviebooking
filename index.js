@@ -27,7 +27,7 @@ app.use(errorHandler)
 export default app.listen(
   PORT,
   console.log(
-    `Server runnig on ${process.env.NODE_ENV} and Lisrening on PORT:${PORT}`
+    `Server is runnig on ${process.env.NODE_ENV} and Lisrening on PORT:${PORT}`
       .yellow.bold
   )
 )
