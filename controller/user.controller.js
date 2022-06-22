@@ -37,7 +37,7 @@ export const userSignup = asyncHandler(async (req, res) => {
 })
 
 export const userSignin = asyncHandler(async (req, res) => {
-  console.log('rom signin', req.body.data)
+  console.log('from signin' + req.body.data)
   const decryptedData = JSON.parse(getDecryptedDate(req.body.data))
   const validation = signinValidtor.validate(decryptedData)
   if (!validation.error) {
