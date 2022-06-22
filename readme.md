@@ -1,8 +1,18 @@
 This API is running on node version:v16.14.0
+note:
+
+1. I have used Prettier code extention to format the code please install the sam for better code fromatiing.
+2. Please use api from
+   WEB API folder : if you are using online API's
+   LOCAL API folder: if you are running project locally
+3. if you are running project locally please execute bello command insideproject root folder
+   npm run start
+
+Steps to run project on Web
 
 1.  install all the dependencies for api
     command : npm i
-2.      import collection using bellow link
+2.  import collection using bellow link
     https://www.getpostman.com/collections/04b4ed4923769f3b6633
 3.  this api is hosted on Heroku so we can test this on web
     Base link :
@@ -42,7 +52,7 @@ This API is running on node version:v16.14.0
 
         will give you list locations where movies are avialble
 
-    4.  book a ticket (PROTECTED ROUTE) :
+    1.  book a ticket (PROTECTED ROUTE) :
 
         https://mymoviesbooking.herokuapp.com/api/movies/bookticket
 
@@ -72,11 +82,11 @@ This API is running on node version:v16.14.0
         followed by Bearer word
         eg: Bearer testesttesttesttoken
 
-how to encrypt data
+4.  how to encrypt data
 
-1. please hit https://mymoviesbooking.herokuapp.com/api/enc/getdata api
-2. to encrypt your json data open body section and paste your json if front of
-   data key
+i. please hit https://mymoviesbooking.herokuapp.com/api/enc/getdata api
+ii. to encrypt your json data open body section and paste your json if front of
+data key
 
 eg: {
 "type": "enc",
@@ -88,10 +98,10 @@ eg: {
 }
 }
 
-3. press send keyafter that you will receive encrypted body
-4. you can use this as request body for protected routes
+iii. press send keyafter that you will receive encrypted body
+iv. you can use this as request body for protected routes
 
-To run the test case
+5. To run the test case
 
-1. you have to run the command npm test from your project
-   root directory
+i. you have to run the command npm test from your project
+root directory
