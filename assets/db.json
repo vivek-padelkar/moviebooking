@@ -29,6 +29,13 @@
       "password": "Abc@12345",
       "age": 18,
       "id": 4
+    },
+    {
+      "name": "johhny jack",
+      "email": "johnyjack@mail.com",
+      "password": "Aaa@12345678",
+      "age": "18",
+      "id": 5
     }
   ],
   "movies": [

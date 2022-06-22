@@ -24,7 +24,7 @@ app.use('/api/enc', encRoute)
 app.use(notfound)
 app.use(errorHandler)
 
-app.listen(
+export default app.listen(
   PORT,
   console.log(
     `Server runnig on ${process.env.NODE_ENV} and Lisrening on PORT:${PORT}`
