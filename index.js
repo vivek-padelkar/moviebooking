@@ -17,6 +17,10 @@ if (process.env.NODE_ENV == 'development') {
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+  res.send('Welcome to movie API')
+})
+
 app.use('/api/users', userRoute)
 app.use('/api/movies', movieRoute)
 app.use('/api/enc', encRoute)
